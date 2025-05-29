@@ -23,7 +23,7 @@ Task requires proof of concept solution, therefore, solution will be constrained
 2) Solution will analyze a limited number of English accents (Namely: english,american,australian, indian, irish, african, malaysian, kiwi, south atlantic, bermuda, filipino, chinese, welsh and singaporean)
 
 ## Solution:
-Steps:
+### Installation Steps:
 
 1) Download the code in local machine, and store it in a folder.
 2) Install python 3.9 ( if not already installed)
