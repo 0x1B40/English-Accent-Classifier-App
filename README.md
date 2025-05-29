@@ -1,6 +1,6 @@
 # 📽️ Demo
 
-[![Watch the video](https://i9.ytimg.com/vi_webp/ONuoW3pODB8/mq3.webp?sqp=CKD24cEG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgYCg2MA8=&rs=AOn4CLDGI7mvDHFuBQN_8Y9qaTMuQK54WA)](https://youtu.be/ONuoW3pODB8)
+[![Watch the video](videoframe_10379.png)](https://youtu.be/ONuoW3pODB8)
 
 
 # Problem Statement:
