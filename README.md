@@ -1,6 +1,6 @@
 # 📽️ Demo
 
-[![Watch the video](github.png)](https://youtu.be/ONuoW3pODB8)
+[![Watch the video](mq3.png)](https://youtu.be/ONuoW3pODB8)
 
 
 # Problem Statement:
