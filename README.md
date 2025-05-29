@@ -20,7 +20,7 @@ Output:
 Task requires proof of concept solution, therefore, solution will be constrained under limited constraints that meet the objective requirement as a Proof-of-Concept of a producable working solution
 
 1) Solution will provide the feature to download and analyze Youtube videos, therefore it will be constrained on URLs from Youtube only.
-2) Solution will analyze a limited number of English accents (Namely: english,american,australian, indian, irish, africain, malaysian, kiwi, south atlantic, bermuda, filipino, chinese, welsh and singaporean)
+2) Solution will analyze a limited number of English accents (Namely: english,american,australian, indian, irish, african, malaysian, kiwi, south atlantic, bermuda, filipino, chinese, welsh and singaporean)
 
 ## Solution:
 Steps:
