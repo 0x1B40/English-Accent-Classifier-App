@@ -10,7 +10,6 @@
 Output:
   - Classification of the accent (e.g., British, American, Australian, etc.)
   - A confidence in English accent score (e.g., 0-100%)
-  - A short summary or explanation (optional)
 
 
 ## Assumptions:
