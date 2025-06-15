@@ -3,13 +3,10 @@
 [![Watch the video](mq3.png)](https://youtu.be/ONuoW3pODB8)
 
 
-# Problem Statement:
-
-## Objective:
-Build a working script or simple tool that can do the following:
+## Features:
 1. Accept a public video URL (e.g., Loom or direct MP4 link).
 2. Extract the audio from the video.
-3. Analyze the speaker’s accent to detect English language speaking candidates. 
+3. Analyze the speaker’s accent to detect English language speaking accents
 Output:
   - Classification of the accent (e.g., British, American, Australian, etc.)
   - A confidence in English accent score (e.g., 0-100%)
@@ -17,12 +14,10 @@ Output:
 
 
 ## Assumptions:
-Task requires proof of concept solution, therefore, solution will be constrained under limited constraints that meet the objective requirement as a Proof-of-Concept of a producable working solution
 
 1) Solution will provide the feature to download and analyze Youtube videos, therefore it will be constrained on URLs from Youtube only.
 2) Solution will analyze a limited number of English accents (Namely: english,american,australian, indian, irish, african, malaysian, kiwi, south atlantic, bermuda, filipino, chinese, welsh and singaporean)
 
-## Solution:
 ### Installation Steps:
 
 1) Download the code in local machine, and store it in a folder.
