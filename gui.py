@@ -46,7 +46,10 @@ def download_and_convert_to_wav(youtube_url):
         FileNotFoundError: If the MP3 file was not created successfully.
     """
     if not DEPENDENCIES_AVAILABLE:
-        raise RuntimeError("Required dependencies are not available. Please install torch, pydub, speechbrain, and yt-dlp.")
+        raise RuntimeError(
+            "Required dependencies are not available. Please install "
+            "torch, pydub, speechbrain, and yt-dlp."
+        )
     output_filename = "audio_file"
     ydl_opts = {
         'format': 'bestaudio/best',
@@ -89,7 +92,10 @@ def classify_accent(wav_path):
         RuntimeError: If required dependencies are not available.
     """
     if not DEPENDENCIES_AVAILABLE or model is None:
-        raise RuntimeError("Required dependencies are not available. Please install torch, pydub, speechbrain, and yt-dlp.")
+        raise RuntimeError(
+            "Required dependencies are not available. Please install "
+            "torch, pydub, speechbrain, and yt-dlp."
+        )
 
     logits, _, _, _ = model.classify_file(wav_path)
     probs = F.softmax(logits, dim=1)
