@@ -6,6 +6,7 @@ import sys
 import threading
 import time
 
+
 def test_basic_tkinter():
     """Test basic tkinter functionality."""
     try:
@@ -47,8 +48,10 @@ def test_basic_tkinter():
     except Exception as e:
         print(f"Error during tkinter test: {e}")
         import traceback
+
         traceback.print_exc()
         return False
+
 
 if __name__ == "__main__":
     success = test_basic_tkinter()

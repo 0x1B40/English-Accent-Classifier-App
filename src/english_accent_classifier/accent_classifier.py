@@ -9,6 +9,7 @@ try:
     import torch
     import torch.nn.functional as F
     from speechbrain.inference import EncoderClassifier
+
     DEPENDENCIES_AVAILABLE = True
 except ImportError as e:
     DEPENDENCIES_AVAILABLE = False
@@ -39,8 +40,8 @@ class AccentClassifier:
             )
 
         config = get_config()
-        self.model_path = model_path or config.get('model.path')
-        self.cache_dir = config.get('model.cache_dir')
+        self.model_path = model_path or config.get("model.path")
+        self.cache_dir = config.get("model.cache_dir")
 
         self.model: Optional[EncoderClassifier] = None
         self._load_model()
@@ -50,11 +51,13 @@ class AccentClassifier:
         try:
             # Set cache directory if specified
             if self.cache_dir:
-                os.environ['TORCH_HOME'] = self.cache_dir
+                os.environ["TORCH_HOME"] = self.cache_dir
 
             self.model = EncoderClassifier.from_hparams(self.model_path)
         except Exception as e:
-            raise ClassificationError(f"Failed to load accent classification model: {str(e)}")
+            raise ClassificationError(
+                f"Failed to load accent classification model: {str(e)}"
+            )
 
     def classify_accent(self, wav_path: str) -> Tuple[str, str]:
         """Classify the English accent in the given WAV audio file.
@@ -83,7 +86,7 @@ class AccentClassifier:
         # Normalize the path to absolute path to avoid Windows path issues
         wav_path = os.path.abspath(wav_path)
         # Convert backslashes to forward slashes to avoid escape character issues
-        wav_path = wav_path.replace('\\', '/')
+        wav_path = wav_path.replace("\\", "/")
         logger.info(f"Classifying audio file: {wav_path}")
 
         try:

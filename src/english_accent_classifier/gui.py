@@ -22,7 +22,9 @@ class AccentClassifierGUI:
             self.audio_processor = AudioProcessor()
             self.classifier = AccentClassifier()
         except Exception as e:
-            logger.error(f"Failed to initialize audio processor or classifier: {str(e)}")
+            logger.error(
+                f"Failed to initialize audio processor or classifier: {str(e)}"
+            )
             raise RuntimeError(f"Failed to initialize application components: {str(e)}")
 
         # GUI elements
@@ -42,9 +44,9 @@ class AccentClassifierGUI:
         config = get_config()
 
         self.root = tk.Tk()
-        self.root.title(config.get('gui.title'))
-        width = config.get('gui.width')
-        height = config.get('gui.height')
+        self.root.title(config.get("gui.title"))
+        width = config.get("gui.width")
+        height = config.get("gui.height")
         self.root.geometry(f"{width}x{height}")
         self.root.resizable(True, True)
 
@@ -59,10 +61,13 @@ class AccentClassifierGUI:
         config = get_config()
 
         # URL input
-        font_family = config.get('gui.font_family')
-        font_size = config.get('gui.font_size')
-        tk.Label(self.root, text="Enter YouTube Video URL:",
-                font=(font_family, font_size + 2)).pack(pady=(20, 5))
+        font_family = config.get("gui.font_family")
+        font_size = config.get("gui.font_size")
+        tk.Label(
+            self.root,
+            text="Enter YouTube Video URL:",
+            font=(font_family, font_size + 2),
+        ).pack(pady=(20, 5))
 
         self.url_entry = tk.Entry(self.root, width=60, font=(font_family, font_size))
         self.url_entry.pack(pady=(0, 20))
@@ -76,7 +81,7 @@ class AccentClassifierGUI:
             bg="#4CAF50",
             fg="white",
             padx=20,
-            pady=10
+            pady=10,
         )
         self.process_button.pack(pady=(0, 20))
 
@@ -85,13 +90,14 @@ class AccentClassifierGUI:
             self.root,
             text="Ready to analyze accents...",
             font=(font_family, font_size),
-            fg="#666666"
+            fg="#666666",
         )
         self.status_label.pack(pady=(0, 10))
 
         # Results text area
-        tk.Label(self.root, text="Classification Results:",
-                font=(font_family, font_size + 2)).pack(pady=(10, 5))
+        tk.Label(
+            self.root, text="Classification Results:", font=(font_family, font_size + 2)
+        ).pack(pady=(10, 5))
 
         # Create a frame for text area and scrollbar
         text_frame = tk.Frame(self.root)
@@ -107,7 +113,7 @@ class AccentClassifierGUI:
             width=70,
             font=("Courier", font_size),
             wrap=tk.WORD,
-            yscrollcommand=self.scrollbar.set
+            yscrollcommand=self.scrollbar.set,
         )
         self.result_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
@@ -128,8 +134,9 @@ class AccentClassifierGUI:
         try:
             # Update UI
             self._set_processing_state(True)
-            self.status_label.config(text="Downloading and processing audio...",
-                                   fg="#FF9800")
+            self.status_label.config(
+                text="Downloading and processing audio...", fg="#FF9800"
+            )
             self.root.update()
 
             # Process audio
@@ -144,8 +151,7 @@ class AccentClassifierGUI:
                 self.result_text.delete("1.0", tk.END)
                 self.result_text.insert(tk.END, result)
                 self.status_label.config(
-                    text=f"Most probable accent: {most_probable_accent}",
-                    fg="#4CAF50"
+                    text=f"Most probable accent: {most_probable_accent}", fg="#4CAF50"
                 )
 
                 logger.info(f"Classification complete: {most_probable_accent}")
@@ -196,20 +202,17 @@ def run_gui() -> None:
         print("Configuration loaded successfully")
 
         # Configure logging
-        log_level = config.get('logging.level', 'INFO')
-        log_format = config.get('logging.format')
-        log_file = config.get('logging.file')
+        log_level = config.get("logging.level", "INFO")
+        log_format = config.get("logging.format")
+        log_file = config.get("logging.file")
 
         # Convert string level to logging level
         numeric_level = getattr(logging, log_level.upper(), logging.INFO)
 
-        log_config = {
-            'level': numeric_level,
-            'format': log_format
-        }
+        log_config = {"level": numeric_level, "format": log_format}
 
         if log_file:
-            log_config['filename'] = log_file
+            log_config["filename"] = log_file
 
         logging.basicConfig(**log_config)
         logger.info("Logging configured successfully")
@@ -225,7 +228,9 @@ def run_gui() -> None:
         except Exception as tk_error:
             print(f"Tkinter not available or not properly configured: {tk_error}")
             print("This might be due to running in an environment without GUI support.")
-            print("Try running this application on a desktop environment with GUI support.")
+            print(
+                "Try running this application on a desktop environment with GUI support."
+            )
             return
 
         # Create and run GUI
@@ -238,5 +243,6 @@ def run_gui() -> None:
         # If we get here, logging might not be set up yet
         print(f"Error starting GUI application: {e}")
         import traceback
+
         traceback.print_exc()
         raise

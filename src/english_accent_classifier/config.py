@@ -6,6 +6,7 @@ from typing import Any, Dict, Optional
 
 try:
     import yaml
+
     YAML_AVAILABLE = True
 except ImportError:
     YAML_AVAILABLE = False
@@ -41,7 +42,7 @@ class Config:
 
         try:
             if os.path.exists(self.config_file):
-                with open(self.config_file, 'r', encoding='utf-8') as f:
+                with open(self.config_file, "r", encoding="utf-8") as f:
                     loaded_config = yaml.safe_load(f) or {}
                 # Merge with defaults
                 defaults = self._get_default_config()
@@ -58,42 +59,44 @@ class Config:
             "app": {
                 "name": "English Accent Classifier",
                 "version": "1.0.0",
-                "description": "A tool for identifying English accents from YouTube videos"
+                "description": "A tool for identifying English accents from YouTube videos",
             },
-            "audio": {
-                "temp_dir": None,
-                "sample_rate": 16000,
-                "channels": 1
-            },
+            "audio": {"temp_dir": None, "sample_rate": 16000, "channels": 1},
             "model": {
                 "path": "Jzuluaga/accent-id-commonaccent_ecapa",
-                "cache_dir": None
+                "cache_dir": None,
             },
             "youtube": {
                 "format": "bestaudio/best",
                 "audio_format": "mp3",
-                "audio_quality": "192"
+                "audio_quality": "192",
             },
             "logging": {
                 "level": "INFO",
                 "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-                "file": None
+                "file": None,
             },
             "gui": {
                 "title": "English Accent Classifier",
                 "width": 600,
                 "height": 500,
                 "font_family": "Arial",
-                "font_size": 10
-            }
+                "font_size": 10,
+            },
         }
 
-    def _merge_configs(self, base: Dict[str, Any], override: Dict[str, Any]) -> Dict[str, Any]:
+    def _merge_configs(
+        self, base: Dict[str, Any], override: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """Recursively merge two configuration dictionaries."""
         result = base.copy()
 
         for key, value in override.items():
-            if key in result and isinstance(result[key], dict) and isinstance(value, dict):
+            if (
+                key in result
+                and isinstance(result[key], dict)
+                and isinstance(value, dict)
+            ):
                 result[key] = self._merge_configs(result[key], value)
             else:
                 result[key] = value
@@ -110,7 +113,7 @@ class Config:
         Returns:
             Configuration value or default
         """
-        keys = key.split('.')
+        keys = key.split(".")
         value = self._config
 
         try:
@@ -127,7 +130,7 @@ class Config:
             key: Dot-separated configuration key
             value: Value to set
         """
-        keys = key.split('.')
+        keys = key.split(".")
         config = self._config
 
         # Navigate to the parent of the final key
@@ -153,7 +156,7 @@ class Config:
         # Ensure directory exists
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
-        with open(save_path, 'w', encoding='utf-8') as f:
+        with open(save_path, "w", encoding="utf-8") as f:
             yaml.safe_dump(self._config, f, default_flow_style=False, indent=2)
 
 

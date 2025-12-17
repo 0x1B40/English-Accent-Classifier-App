@@ -7,7 +7,7 @@ from english_accent_classifier.exceptions import (
     DependencyError,
     AudioProcessingError,
     DownloadError,
-    ClassificationError
+    ClassificationError,
 )
 
 
@@ -50,7 +50,7 @@ class TestExceptions(unittest.TestCase):
             DependencyError("test"),
             AudioProcessingError("test"),
             DownloadError("test"),
-            ClassificationError("test")
+            ClassificationError("test"),
         ]
 
         for exc in exceptions:
@@ -58,5 +58,5 @@ class TestExceptions(unittest.TestCase):
                 self.assertIsInstance(exc, AccentClassifierError)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

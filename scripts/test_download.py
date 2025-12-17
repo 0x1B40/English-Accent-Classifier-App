@@ -6,13 +6,14 @@ import os
 
 # Add the src directory to the Python path
 current_dir = os.path.dirname(os.path.dirname(__file__))
-src_dir = os.path.join(current_dir, 'src')
+src_dir = os.path.join(current_dir, "src")
 sys.path.insert(0, src_dir)
 
 from english_accent_classifier.audio_processor import AudioProcessor
 import logging
 
 logging.basicConfig(level=logging.INFO)
+
 
 def test_download():
     """Test downloading from a known working YouTube video."""
@@ -49,7 +50,9 @@ def test_download():
     except Exception as e:
         print(f"Test failed: {e}")
         import traceback
+
         traceback.print_exc()
+
 
 if __name__ == "__main__":
     test_download()

@@ -7,12 +7,13 @@ import tempfile
 
 # Add the src directory to the Python path
 current_dir = os.path.dirname(os.path.dirname(__file__))
-src_dir = os.path.join(current_dir, 'src')
+src_dir = os.path.join(current_dir, "src")
 sys.path.insert(0, src_dir)
 
 from english_accent_classifier.accent_classifier import AccentClassifier
 import torch
 import torch.nn.functional as F
+
 
 def test_formatting():
     """Test the result formatting logic."""
@@ -26,9 +27,20 @@ def test_formatting():
 
         # Mock class labels
         mock_labels = [
-            'american', 'australian', 'british', 'indian', 'irish',
-            'african', 'malaysian', 'kiwi', 'south_atlantic', 'bermuda',
-            'filipino', 'chinese', 'welsh', 'singaporean'
+            "american",
+            "australian",
+            "british",
+            "indian",
+            "irish",
+            "african",
+            "malaysian",
+            "kiwi",
+            "south_atlantic",
+            "bermuda",
+            "filipino",
+            "chinese",
+            "welsh",
+            "singaporean",
         ]
 
         # Test the formatting logic
@@ -46,20 +58,24 @@ def test_formatting():
         print(f"Most probable accent: {best_label}")
 
         # Verify the format looks correct
-        lines = result.strip().split('\n')
+        lines = result.strip().split("\n")
         assert len(lines) >= 3, "Should have header + blank line + accent lines"
         assert "Accent probabilities:" in lines[0], "Should have header"
 
         # Check that each accent line has the right format
-        accent_lines = [line for line in lines if ':' in line and '%' in line]
-        assert len(accent_lines) == 14, f"Should have 14 accent lines, got {len(accent_lines)}"
+        accent_lines = [line for line in lines if ":" in line and "%" in line]
+        assert (
+            len(accent_lines) == 14
+        ), f"Should have 14 accent lines, got {len(accent_lines)}"
 
         print("SUCCESS: Formatting test passed!")
 
     except Exception as e:
         print(f"FAILED: Test failed: {e}")
         import traceback
+
         traceback.print_exc()
+
 
 if __name__ == "__main__":
     test_formatting()

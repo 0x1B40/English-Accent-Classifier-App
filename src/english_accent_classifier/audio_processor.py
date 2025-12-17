@@ -9,6 +9,7 @@ from typing import Optional
 try:
     from pydub import AudioSegment
     import yt_dlp
+
     DEPENDENCIES_AVAILABLE = True
 except ImportError as e:
     DEPENDENCIES_AVAILABLE = False
@@ -39,10 +40,12 @@ class AudioProcessor:
             )
 
         config = get_config()
-        self.temp_dir = temp_dir or config.get('audio.temp_dir') or tempfile.gettempdir()
-        self.youtube_format = config.get('youtube.format')
-        self.audio_format = config.get('youtube.audio_format')
-        self.audio_quality = config.get('youtube.audio_quality')
+        self.temp_dir = (
+            temp_dir or config.get("audio.temp_dir") or tempfile.gettempdir()
+        )
+        self.youtube_format = config.get("youtube.format")
+        self.audio_format = config.get("youtube.audio_format")
+        self.audio_quality = config.get("youtube.audio_quality")
 
     def download_and_convert_to_wav(self, youtube_url: str) -> str:
         """Download audio from YouTube URL and convert it to WAV format.
@@ -72,20 +75,22 @@ class AudioProcessor:
         try:
             # Configure yt-dlp options with fallbacks
             ydl_opts = {
-                'format': self.youtube_format,
-                'outtmpl': f"{temp_base}.%(ext)s",
-                'postprocessors': [{
-                    'key': 'FFmpegExtractAudio',
-                    'preferredcodec': self.audio_format,
-                    'preferredquality': self.audio_quality,
-                }],
-                'quiet': True,
-                'no_warnings': True,
+                "format": self.youtube_format,
+                "outtmpl": f"{temp_base}.%(ext)s",
+                "postprocessors": [
+                    {
+                        "key": "FFmpegExtractAudio",
+                        "preferredcodec": self.audio_format,
+                        "preferredquality": self.audio_quality,
+                    }
+                ],
+                "quiet": True,
+                "no_warnings": True,
                 # Add options to handle various YouTube issues
-                'extractor_args': {
-                    'youtube': {
-                        'player_client': ['android', 'web'],
-                        'player_skip': ['js', 'configs'],
+                "extractor_args": {
+                    "youtube": {
+                        "player_client": ["android", "web"],
+                        "player_skip": ["js", "configs"],
                     }
                 },
             }
@@ -107,7 +112,9 @@ class AudioProcessor:
                     "may not contain audio, or may be restricted. Try a different YouTube URL."
                 )
 
-            logger.info(f"Downloaded audio file size: {os.path.getsize(temp_audio_file)} bytes")
+            logger.info(
+                f"Downloaded audio file size: {os.path.getsize(temp_audio_file)} bytes"
+            )
 
             # Convert to WAV
             audio = AudioSegment.from_file(temp_audio_file)

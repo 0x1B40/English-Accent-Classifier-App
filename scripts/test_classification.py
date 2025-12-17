@@ -7,7 +7,7 @@ import tempfile
 
 # Add the src directory to the Python path
 current_dir = os.path.dirname(os.path.dirname(__file__))
-src_dir = os.path.join(current_dir, 'src')
+src_dir = os.path.join(current_dir, "src")
 sys.path.insert(0, src_dir)
 
 from english_accent_classifier.accent_classifier import AccentClassifier
@@ -15,6 +15,7 @@ from english_accent_classifier.audio_processor import AudioProcessor
 import logging
 
 logging.basicConfig(level=logging.INFO)
+
 
 def test_classification():
     """Test classification with a mock file."""
@@ -24,8 +25,8 @@ def test_classification():
 
         print("Creating a dummy WAV file...")
         # Create a temporary WAV file (even if it's empty, just to test path handling)
-        with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as temp_file:
-            temp_file.write(b'dummy wav data')
+        with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as temp_file:
+            temp_file.write(b"dummy wav data")
             temp_path = temp_file.name
 
         print(f"Testing classification with file: {temp_path}")
@@ -44,7 +45,9 @@ def test_classification():
     except Exception as e:
         print(f"Test failed: {e}")
         import traceback
+
         traceback.print_exc()
+
 
 if __name__ == "__main__":
     test_classification()
