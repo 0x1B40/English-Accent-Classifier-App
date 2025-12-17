@@ -7,16 +7,16 @@ import warnings
 from typing import Optional
 
 try:
-    from pydub import AudioSegment
     import yt_dlp
+    from pydub import AudioSegment
 
     DEPENDENCIES_AVAILABLE = True
 except ImportError as e:
     DEPENDENCIES_AVAILABLE = False
     MISSING_DEPENDENCY_ERROR = str(e)
 
-from .exceptions import DependencyError, DownloadError, AudioProcessingError
 from .config import get_config
+from .exceptions import AudioProcessingError, DependencyError, DownloadError
 
 logger = logging.getLogger(__name__)
 

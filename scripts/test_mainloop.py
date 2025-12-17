@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Test tkinter mainloop functionality."""
 
-import tkinter as tk
 import sys
 import threading
 import time
+import tkinter as tk
 
 
 def test_basic_tkinter():

@@ -1,14 +1,14 @@
 """Graphical User Interface for the English Accent Classifier."""
 
+import logging
 import tkinter as tk
 from tkinter import messagebox
-import logging
 from typing import Callable
 
-from .audio_processor import AudioProcessor
 from .accent_classifier import AccentClassifier
-from .exceptions import AccentClassifierError
+from .audio_processor import AudioProcessor
 from .config import get_config
+from .exceptions import AccentClassifierError
 
 logger = logging.getLogger(__name__)
 

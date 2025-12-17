@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """Test script for GUI functionality."""
 
-import sys
 import os
+import sys
 
 # Add the src directory to the Python path
 current_dir = os.path.dirname(os.path.dirname(__file__))
 src_dir = os.path.join(current_dir, "src")
 sys.path.insert(0, src_dir)
 
-from english_accent_classifier.gui import AccentClassifierGUI
 import logging
+
+from english_accent_classifier.gui import AccentClassifierGUI
 
 # Set up basic logging
 logging.basicConfig(

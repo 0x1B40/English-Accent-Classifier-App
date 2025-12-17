@@ -7,9 +7,9 @@ from unittest.mock import MagicMock, patch
 
 from english_accent_classifier.audio_processor import AudioProcessor
 from english_accent_classifier.exceptions import (
+    AudioProcessingError,
     DependencyError,
     DownloadError,
-    AudioProcessingError,
 )
 
 

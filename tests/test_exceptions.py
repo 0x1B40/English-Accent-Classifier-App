@@ -4,10 +4,10 @@ import unittest
 
 from english_accent_classifier.exceptions import (
     AccentClassifierError,
-    DependencyError,
     AudioProcessingError,
-    DownloadError,
     ClassificationError,
+    DependencyError,
+    DownloadError,
 )
 
 

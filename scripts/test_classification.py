@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Test accent classification with a known file."""
 
-import sys
 import os
+import sys
 import tempfile
 
 # Add the src directory to the Python path
@@ -10,9 +10,10 @@ current_dir = os.path.dirname(os.path.dirname(__file__))
 src_dir = os.path.join(current_dir, "src")
 sys.path.insert(0, src_dir)
 
+import logging
+
 from english_accent_classifier.accent_classifier import AccentClassifier
 from english_accent_classifier.audio_processor import AudioProcessor
-import logging
 
 logging.basicConfig(level=logging.INFO)
 

@@ -3,7 +3,7 @@
 import logging
 import os
 import warnings
-from typing import Tuple, Optional
+from typing import Optional, Tuple
 
 try:
     import torch
@@ -15,8 +15,8 @@ except ImportError as e:
     DEPENDENCIES_AVAILABLE = False
     MISSING_DEPENDENCY_ERROR = str(e)
 
-from .exceptions import DependencyError, ClassificationError
 from .config import get_config
+from .exceptions import ClassificationError, DependencyError
 
 logger = logging.getLogger(__name__)
 

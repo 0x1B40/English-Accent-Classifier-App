@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Test accent classification result formatting."""
 
-import sys
 import os
+import sys
 import tempfile
 
 # Add the src directory to the Python path
@@ -10,9 +10,10 @@ current_dir = os.path.dirname(os.path.dirname(__file__))
 src_dir = os.path.join(current_dir, "src")
 sys.path.insert(0, src_dir)
 
-from english_accent_classifier.accent_classifier import AccentClassifier
 import torch
 import torch.nn.functional as F
+
+from english_accent_classifier.accent_classifier import AccentClassifier
 
 
 def test_formatting():

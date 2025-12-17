@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """Test YouTube download functionality."""
 
-import sys
 import os
+import sys
 
 # Add the src directory to the Python path
 current_dir = os.path.dirname(os.path.dirname(__file__))
 src_dir = os.path.join(current_dir, "src")
 sys.path.insert(0, src_dir)
 
-from english_accent_classifier.audio_processor import AudioProcessor
 import logging
+
+from english_accent_classifier.audio_processor import AudioProcessor
 
 logging.basicConfig(level=logging.INFO)
 
