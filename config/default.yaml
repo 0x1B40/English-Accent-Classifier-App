@@ -1,0 +1,31 @@
+# Default configuration for English Accent Classifier
+app:
+  name: "English Accent Classifier"
+  version: "1.0.0"
+  description: "A tool for identifying English accents from YouTube videos"
+
+audio:
+  temp_dir: null  # Use system temp if null
+  sample_rate: 16000
+  channels: 1
+
+model:
+  path: "Jzuluaga/accent-id-commonaccent_ecapa"
+  cache_dir: null  # Use default cache directory
+
+youtube:
+  format: "bestaudio/best"
+  audio_format: "mp3"
+  audio_quality: "192"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: null  # Log to console if null
+
+gui:
+  title: "English Accent Classifier"
+  width: 600
+  height: 500
+  font_family: "Arial"
+  font_size: 10
